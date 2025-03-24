@@ -36,3 +36,4 @@ def analyze_text(request):
         return render(request, "submit.html", {"result": "hateful" if is_hateful else "safe"})
     
     return render(request, "submit.html", {"error": "Invalid request"}, status=400)
+ 
