@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ProjectConfig(AppConfig):
+class H2SappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'project'
+    name = 'h2sapp'

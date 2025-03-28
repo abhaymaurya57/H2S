@@ -1,0 +1,23 @@
+*{    
+    background-color: #092644;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+    color: rgb(57, 216, 43);
+}
+form {
+    margin-top: 20px;
+}
+input, button {
+    padding: 10px;
+    margin: 5px;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
