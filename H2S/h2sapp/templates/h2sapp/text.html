@@ -1,29 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Text</title>
-</head>
-<body>
-    <h1>Text Analysis</h1>
-    
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="document">
+    <h1>Text Analysis</h1> 
     <form method="POST" action="{% url 'analyze' %}">
         {% csrf_token %}
         <label for="text">Enter Text:</label><br>
         <textarea name="text" id="text" rows="4" cols="50"></textarea><br><br>
         <button type="submit">Analyze</button>
     </form>
-
     {% if result %}
         <h2>Analysis Result:</h2>
-        <p>The submitted text is: <strong>{{ result }}</strong></p>
+        <p class="textresult">The submitted text is: <strong>{{ result }}</strong></p>
     {% endif %}
 
     {% if error %}
         <h2>Error:</h2>
         <p>{{ error }}</p>
     {% endif %}
-
-</body>
-</html>
+</div>
+{% endblock %}

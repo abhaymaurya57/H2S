@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Moderation</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="document">
     <h2>Analyze Webpage Content</h2>
     <form method="POST">
         {% csrf_token %}
         <input type="url" name="url" placeholder="Enter webpage URL" required>
         <button type="submit">Analyze</button>
     </form>
-</body>
-</html>
+   
+</div>
+{% endblock %}

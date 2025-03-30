@@ -3,6 +3,10 @@ from django.shortcuts import render
 def base(request):
     return render(request,'h2sapp/base.html')
 
+
+def result(request):
+    return render(request,'h2sapp/result.html')
+
 import pdfplumber
 import fitz
 from bs4 import BeautifulSoup
@@ -85,7 +89,7 @@ def moderate_document(request):
 from .models import ModeratedText
 
 def text(request):
-    return render(request,"submit.html")
+    return render(request,"text.html")
 HATEFUL_KEYWORDS = ["hate", "stupid", "idiot","i love you","utkarsh","pratyush","sumit","abuse", "abuser", "animal", "ape", "assault", "awful", "bad", "barbaric",
     "bigot", "bigotry", "biased", "bitch", "brutal", "bully", "cancer", "ch*nk",
     "clown", "cockroach", "criminal", "cunt", "damn", "deadbeat", "delusional",
@@ -101,7 +105,6 @@ HATEFUL_KEYWORDS = ["hate", "stupid", "idiot","i love you","utkarsh","pratyush",
     'chut',"bur","bhosra"
 ]
 
-
 #  find to given text hate or not hate
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
@@ -114,5 +117,4 @@ def analyze_text(request):
         # ModeratedText.objects.create(text=text, is_hateful=is_hateful)
 
         return render(request, "h2sapp/text.html", {"result": "hateful" if is_hateful else "safe"})
-    
     return render(request, "h2sapp/text.html", {"error": "Invalid request"}, status=400)
