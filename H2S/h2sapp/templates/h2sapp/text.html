@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="document">
+<div class="">
     <h1>Text Analysis</h1> 
     <form method="POST" action="{% url 'analyze' %}">
         {% csrf_token %}
@@ -12,7 +12,7 @@
     </form>
     {% if result %}
         <h2>Analysis Result:</h2>
-        <p class="textresult">The submitted text is: <strong>{{ result }}</strong></p>
+        <p>The submitted text is: <strong>{{ result }}</strong></p>
     {% endif %}
 
     {% if error %}
