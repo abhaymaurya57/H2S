@@ -90,8 +90,7 @@ from .models import ModeratedText
 
 def text(request):
     return render(request,"text.html")
-HATEFUL_KEYWORDS = ["hate", "stupid", "idiot","i love you","utkarsh","pratyush","sumit","abuse", "abuser", "animal", "ape", "assault", "awful", "bad", "barbaric",
-    "bigot", "bigotry", "biased", "bitch", "brutal", "bully", "cancer", "ch*nk",
+HATEFUL_KEYWORDS = ["hate", "stupid", "idiot","bigotry", "biased", "bitch", "brutal", "bully", "cancer", "ch*nk",
     "clown", "cockroach", "criminal", "cunt", "damn", "deadbeat", "delusional",
     "demon", "disgusting", "disgrace", "dumb", "enemy", "evil", "extremist",
     "failure", "fake", "fraud", "garbage", "harass", "hate", "hatred", "hell",
@@ -101,8 +100,7 @@ HATEFUL_KEYWORDS = ["hate", "stupid", "idiot","i love you","utkarsh","pratyush",
     "pervert", "pest", "pig", "psycho", "racist", "rapist", "reject", "repulsive",
     "rubbish", "scum", "shameful", "sick", "slavery", "slur", "stupid", "terrorist",
     "thief", "threat", "trash", "ugly", "unworthy", "useless", "villain", "violent",
-    "vulgar", "weak", "worthless", "wretched",'chod','madharchod','bahanchod','fuckyou','bkl','bahan ki lawri',"bsdk",
-    'chut',"bur","bhosra"
+    "vulgar", "weak", "worthless", "wretched"
 ]
 
 #  find to given text hate or not hate
@@ -112,9 +110,6 @@ def analyze_text(request):
     if request.method == "POST":
         text = request.POST.get("text", "")
         is_hateful = any(word in text.lower() for word in HATEFUL_KEYWORDS)
-
-        # Save to database (optional)
-        # ModeratedText.objects.create(text=text, is_hateful=is_hateful)
 
         return render(request, "h2sapp/text.html", {"result": "hateful" if is_hateful else "safe"})
     return render(request, "h2sapp/text.html", {"error": "Invalid request"}, status=400)
